@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Real Estate Services showcasing premium properties and investment opportunities">
+    <title>Real Estate Portfolio | Alex Carter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .project-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.08);
+        }
+        .project-overlay {
+            transition: all 0.4s ease;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+        }
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #000;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .mobile-menu {
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+        .mobile-menu.open {
+            max-height: 500px;
+        }
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        .filter-btn.active {
+            background-color: #111827;
+            color: white;
+        }
+        .process-step {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background-color: #111827;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 antialiased">
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold font-serif flex items-center">
+                <span class="bg-black text-white px-3 py-1 rounded mr-2">AC</span>
+                <span>Carter Realty</span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#projects" class="nav-link text-gray-600 hover:text-black">Projects</a>
+                <a href="#about" class="nav-link text-gray-600 hover:text-black">About</a>
+                <a href="#process" class="nav-link text-gray-600 hover:text-black">Process</a>
+                <a href="#testimonials" class="nav-link text-gray-600 hover:text-black">Testimonials</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-black">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-white">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#projects" class="text-gray-600 hover:text-black">Projects</a>
+                <a href="#about" class="text-gray-600 hover:text-black">About</a>
+                <a href="#process" class="text-gray-600 hover:text-black">Process</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-black">Testimonials</a>
+                <a href="#contact" class="text-gray-600 hover:text-black">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero h-screen flex items-center justify-center text-center text-white relative">
+        <div class="px-6 max-w-4xl mx-auto">
+            <div class="mb-8">
+                <span class="inline-block bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-4">Real Estate Expert</span>
+                <h1 class="text-4xl md:text-6xl font-bold font-serif mb-6 leading-tight">Finding Your <span class="text-yellow-300">Dream</span> Property</h1>
+                <p class="text-xl md:text-2xl mb-8">Connecting buyers with premium properties and investment opportunities</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#projects" class="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition flex items-center">
+                        View Work <i class="fas fa-arrow-down ml-2"></i>
+                    </a>
+                    <a href="#contact" class="border border-white text-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-black transition flex items-center">
+                        Contact Me <i class="fas fa-envelope ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-0 right-0 text-center">
+            <a href="#projects" class="text-white animate-bounce inline-block">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Featured Projects -->
+    <section id="projects" class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold font-serif mb-4">Featured Properties</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">A curated selection of premium properties and real estate investments.</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active px-6 py-2 rounded-full border border-gray-300 hover:border-black transition" data-filter="all">All Properties</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:border-black transition" data-filter="residential">Residential</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:border-black transition" data-filter="commercial">Commercial</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:border-black transition" data-filter="luxury">Luxury</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-300 hover:border-black transition" data-filter="investment">Investment</button>
+            </div>
+
+            <div class="projects-gallery grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card rounded-xl overflow-hidden relative" data-category="residential">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern Luxury Villa" class="w-full h-80 object-cover">
+                    <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                        <h3 class="text-white text-2xl font-bold mb-2">Modern Luxury Villa</h3>
+                        <p class="text-gray-300 mb-4">Stunning contemporary design with panoramic views</p>
+                        <a href="#" class="text-white font-medium hover:underline inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card rounded-xl overflow-hidden relative" data-category="commercial">
+                    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Downtown Office Complex" class="w-full h-80 object-cover">
+                    <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                        <h3 class="text-white text-2xl font-bold mb-2">Downtown Office Complex</h3>
+                        <p class="text-gray-300 mb-4">Prime commercial space in the heart of the city</p>
+                        <a href="#" class="text-white font-medium hover:underline inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card rounded-xl overflow-hidden relative" data-category="luxury">
+                    <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80" alt="Waterfront Penthouse" class="w-full h-80 object-cover">
+                    <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                        <h3 class="text-white text-2xl font-bold mb-2">Waterfront Penthouse</h3>
+                        <p class="text-gray-300 mb-4">Exclusive luxury living with private terrace</p>
+                        <a href="#" class="text-white font-medium hover:underline inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card rounded-xl overflow-hidden relative" data-category="residential">
+                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Suburban Family Home" class="w-full h-80 object-cover">
+                    <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                        <h3 class="text-white text-2xl font-bold mb-2">Suburban Family Home</h3>
+                        <p class="text-gray-300 mb-4">Spacious family residence with modern amenities</p>
+                        <a href="#" class="text-white font-medium hover:underline inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 5 -->
+                <div class="project-card rounded-xl overflow-hidden relative" data-category="investment">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Multi-Family Apartment Building" class="w-full h-80 object-cover">
+                    <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                        <h3 class="text-white text-2xl font-bold mb-2">Multi-Family Apartment Building</h3>
+                        <p class="text-gray-300 mb-4">High-yield investment property with strong cash flow</p>
+                        <a href="#" class="text-white font-medium hover:underline inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 6 -->
+                <div class="project-card rounded-xl overflow-hidden relative" data-category="luxury">
+                    <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80" alt="Luxury Mountain Retreat" class="w-full h-80 object-cover">
+                    <div class="project-overlay absolute inset-0 flex flex-col justify-end p-6 opacity-0">
+                        <h3 class="text-white text-2xl font-bold mb-2">Luxury Mountain Retreat</h3>
+                        <p class="text-gray-300 mb-4">Secluded mountain estate with breathtaking views</p>
+                        <a href="#" class="text-white font-medium hover:underline inline-flex items-center">
+                            View Project <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-black rounded-full font-medium hover:bg-black hover:text-white transition">
+                    View All Projects <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Showcase -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold font-serif mb-4">Property Showcase</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Explore detailed visuals and virtual tours of our featured properties</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Video -->
+                <div class="relative group rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Virtual Property Tour" class="w-full h-96 object-cover">
+                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
+                        <div class="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center transform group-hover:scale-110 transition-transform">
+                            <i class="fas fa-play text-black text-xl"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Grid -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="relative group rounded-xl overflow-hidden shadow-md h-48">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Luxury Villa Interior" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button class="view-full-btn bg-white/90 text-black px-4 py-2 rounded-full font-medium hover:bg-white transition" data-image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
+                                <i class="fas fa-expand mr-2"></i> View Full
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative group rounded-xl overflow-hidden shadow-md h-48">
+                        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Office Complex" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button class="view-full-btn bg-white/90 text-black px-4 py-2 rounded-full font-medium hover:bg-white transition" data-image="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
+                                <i class="fas fa-expand mr-2"></i> View Full
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative group rounded-xl overflow-hidden shadow-md h-48">
+                        <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Waterfront Penthouse" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button class="view-full-btn bg-white/90 text-black px-4 py-2 rounded-full font-medium hover:bg-white transition" data-image="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80">
+                                <i class="fas fa-expand mr-2"></i> View Full
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative group rounded-xl overflow-hidden shadow-md h-48">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Family Home" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button class="view-full-btn bg-white/90 text-black px-4 py-2 rounded-full font-medium hover:bg-white transition" data-image="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80">
+                                <i class="fas fa-expand mr-2"></i> View Full
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border border-black rounded-full font-medium hover:bg-black hover:text-white transition">
+                    View All Media <i class="fas fa-images ml-2"></i>
